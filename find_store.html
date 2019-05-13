@@ -26,17 +26,25 @@
 </body>
  
 <script>
+//initialize map with sample latitude and longitude
 let initialLatLng = [35.9957436, -78.9012117]
 let mymap = L.map('mapid').setView(initialLatLng, 11);
 
+//get the initial map from the Leaflet API
 const osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 
 }).addTo(mymap);
+
+//set initial marker at the store nearest to the sample latitude and longitude
 let mylatLng = [35.966045, -78.9587215]
 let marker = L.marker(mylatLng).addTo(mymap);
 marker.setLatLng(mylatLng).update();
+
+//add simple popup to marker
 marker.bindPopup("<b>Hi! I am the nearest store!").openPopup();
+
+//get the address from the input box and pass it to the function that searches for its latitude and longitude
 function getAdd() {
     $("#addbtn").on('click', function () {
         myFetch($("#addr").val())
@@ -44,6 +52,7 @@ function getAdd() {
 }
 getAdd()
 
+//take the address from the input box, search teh //photon.komoot.de/api/ for its geographical coordinates and set them to variables
 function myFetch(address) {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const queryUrl = encodeURI('http://photon.komoot.de/api/?limit=1&q=' + address)
@@ -58,6 +67,7 @@ function myFetch(address) {
         })
 }
 
+//get the locations of the stores listed in the parsed.json file
 function getStoreLocs(addLat, addLong) {
     let url = 'parsed.json';
     $.getJSON(url, function (json) {
@@ -67,6 +77,7 @@ function getStoreLocs(addLat, addLong) {
 }
 getStoreLocs()
 
+//use the address geographical coordinates and the coordinates found in the parsed json file to calculate which is the store nearest to that address. Set the map to the address location and the marker to the store location
 function findNearest(addLat, addLong, storeArr) {
     let distance = null;
     let nearest = null;
@@ -101,6 +112,7 @@ function findNearest(addLat, addLong, storeArr) {
     // }
 }
 
+//function to calculate distance using the Haversine formula that uses the radius of the earth to measure the distance
 function getDistance(lat1, lon1, lat2, lon2, unit = "M") {
     if ((lat1 === lat2) && (lon1 === lon2)) {
         return 0;
