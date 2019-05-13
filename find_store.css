@@ -1,13 +1,26 @@
  #mapid {
-            height: 680px;
+            height: 580px;
             width: 1000px;
             border: 1px solid black;
         }
 
 input {
-    height: 50px;
+    height: 40px;
     border: 1px black solid;
     border-radius: 15%;
     font: 16px;
     text-align: center;
+}
+
+
+textarea {
+    border: 1px black solid;
+    margin-left: 20px;
+    
+}
+
+header {
+    background-color: cornsilk;
+    height: 60px;
+    margin-bottom: 1%;
 }

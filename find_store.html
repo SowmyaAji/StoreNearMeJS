@@ -11,6 +11,7 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
   
 </head>
 
@@ -18,17 +19,19 @@
     <header>
         <h1>StoreNearMe</h1>
     </header>
-    <div><input type="text" id="addr" placeholder="Enter your address"><button id="addbtn">Go</button>
+    <div id=wrapper>
+    <div><input type="text" id="addr" placeholder="Enter your address"><button id="addbtn">Go</button><textarea id="storeadd" type="text"  placeholder="Nearest store address" ></textarea></div>
     
     <br>
     <div id="mapid"></div>
 
+</div?
 </body>
  
 <script>
 //initialize map with sample latitude and longitude
 let initialLatLng = [35.9957436, -78.9012117]
-let mymap = L.map('mapid').setView(initialLatLng, 11);
+let mymap = L.map('mapid').setView(initialLatLng, 15);
 
 //get the initial map from the Leaflet API
 const osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -99,13 +102,16 @@ function findNearest(addLat, addLong, storeArr) {
     })
     let addLatLong = [addLat, addLong]
     initialLatLong = addLatLong
-    console.log(nearest, distance, latLong, addLatLong)
     mylatLng = latLong
     marker.setLatLng(mylatLng).update();
-    map.setView(new L.LatLng(addLatLong), 8);
-    console.log(mylatLng)
-    let newContent = nearest
-    marker.setPopupContent(newContent)
+    mymap.setView(mylatLng, 8);
+    let storeadd = '';
+    $.each(nearest, function(key, value) {
+        storeadd += ' ' + key + ' ' + value;
+    });
+    
+    console.log(storeadd)
+    $("#storeadd").val("Address: " + storeadd + " " + "Distance: " + distance + " miles")
     // return {
     //     addLatLong: addLatLong,
     //     location: nearest, distance: distance, latLong: latLong
