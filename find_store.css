@@ -3,9 +3,16 @@
             width: 1000px;
             border: 1px solid black;
         }
+@media (max-width: 400px) {
+    #mapid {
+            height: 580px;
+            width: 500px;
+            border: 1px solid black;
+        }
+}
 
 input {
-    height: 40px;
+    height: 60px;
     border: 1px black solid;
     border-radius: 15%;
     font: 16px;
