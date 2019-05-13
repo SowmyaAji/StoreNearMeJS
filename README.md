@@ -7,17 +7,20 @@ given as an input in the text box.
 The app shows the location of the store, gives the address of the store and also identifies
 the distance from the address given a input. 
 
+## Example Usasge
+
+Type an address Corcoran St Durham 27701 in the input box
+
+
 ## Output
 
-Leaflet map with an address like this address in a popup:
+Leaflet map will show the store location with this address in a popup:
 
+Store Name Durham Store Location SWC Shannon Rd & US Hwy 15-501 Address 4037 Durham Chapel Hill Blvd City Durham State NC Zip Code 27707-2516 Latitude 35.966045 Longitude -78.9587215 County Durham County
 
-Store Name Crystal Store Location SWC Broadway & Bass Lake Rd Address 5537 W Broadway Ave 
-City Crystal State MN Zip Code 55428-3507 Latitude 45.0521539 Longitude -93.364854 County Hennepin County
+It also displays distance to the store from Corcoran St in a text box like this:
+Distance: : 3.7359081113501382 
 
-
-It also displays distance in a text box like this:
-Distance: 1.6503629193180895 miles
 
 ## Resources
 
