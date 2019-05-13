@@ -20,7 +20,7 @@
         <h1>StoreNearMe</h1>
     </header>
     <div id=wrapper>
-    <div><input type="text" id="addr" placeholder="Enter your address"><button id="addbtn">Go</button><textarea id="storeadd" type="text"  placeholder="Nearest store address" ></textarea></div>
+    <div><input type="text" id="addr" placeholder="Enter your address"><button id="addbtn">Go</button><textarea id="storeadd" type="text"  placeholder="Distance to store" ></textarea></div>
     
     <br>
     <div id="mapid"></div>
@@ -109,9 +109,9 @@ function findNearest(addLat, addLong, storeArr) {
     $.each(nearest, function(key, value) {
         storeadd += ' ' + key + ' ' + value;
     });
-    
+    marker.setPopupContent(storeadd);
     console.log(storeadd)
-    $("#storeadd").val("Address: " + storeadd + " " + "Distance: " + distance + " miles")
+    $("#storeadd").val("Distance: " + distance + " miles")
     // return {
     //     addLatLong: addLatLong,
     //     location: nearest, distance: distance, latLong: latLong
