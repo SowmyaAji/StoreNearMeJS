@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="find_store.css">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" defer></script>
-    <script src="findStore.js" defer></script>
-  
   
 </head>
 
@@ -25,19 +22,23 @@
     <div id="mapid"></div>
 
 </body>
+ 
 <script>
 
-const mymap = L.map('mapid').setView([35.9957436, -78.9012117], 13);
-console.log("hi")
-
+let mymap = L.map('mapid').setView([35.9957436, -78.9012117], 13);
 const osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 
 }).addTo(mymap);
-
-L.marker([35.966045, -78.9587215]).addTo(mymap);
+let mylatLng = [35.966045, -78.9587215]
+let marker = L.marker(mylatLng).addTo(mymap);
+marker.setLatLng(mylatLng).update();
 marker.bindPopup("<b>Hi! I am the nearest store!").openPopup();
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script src="findStore.js"></script> 
 
 
 </html>

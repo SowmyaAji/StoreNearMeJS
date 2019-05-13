@@ -2,7 +2,6 @@
 function getAdd() {
     $("#addbtn").on('click', function () {
         myFetch($("#addr").val())
-        const mymap = L.map('mapid').setView(, 13)
     })
 }
 getAdd()
@@ -13,7 +12,6 @@ function myFetch(address) {
     fetch(proxyUrl + queryUrl)
         .then(blob => blob.json())
         .then(data => {
-
             let addLat = data.features[0].geometry.coordinates[1]
             addLat = parseFloat(addLat)
             let addLong = data.features[0].geometry.coordinates[0]
@@ -34,7 +32,8 @@ getStoreLocs()
 function findNearest(addLat, addLong, storeArr) {
     let distance = null;
     let nearest = null;
-    let latlong = [];
+    let latLong = [];
+
     storeArr.forEach((location) => {
         let storeLat = (location['Latitude'])
         storeLat = parseFloat(storeLat)
@@ -46,14 +45,17 @@ function findNearest(addLat, addLong, storeArr) {
             distance = dist;
             distance = parseFloat(distance)
             nearest = location;
-            latlong = [storeLat, storeLong]
+            latLong = [storeLat, storeLong]
         }
     })
-
-    console.log(nearest, distance, latlong)
-    return {
-        location: nearest, distance: distance, latlong: latlong
-    }
+    let addLatLong = [addLat, addLong]
+    console.log(nearest, distance, latLong, addLatLong)
+    mylatLng = latLong
+    console.log(mylatLng)
+    // return {
+    //     addLatLong: addLatLong,
+    //     location: nearest, distance: distance, latLong: latLong
+    // }
 }
 
 function getDistance(lat1, lon1, lat2, lon2, unit = "M") {
