@@ -1,0 +1,13 @@
+ #mapid {
+            height: 580px;
+            width: 900px;
+            border: 1px solid black;
+        }
+
+input {
+    height: 50px;
+    border: 1px black solid;
+    border-radius: 15%;
+    font: 16px;
+    text-align: center;
+}
