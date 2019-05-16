@@ -28,9 +28,7 @@ Leaflet API with open street map link : http://{s}.tile.osm.org/{z}/{x}/{y}.png'
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' }
     was used to display the map
     
-Photon-Komoot API was used to get the geographical coordinates of the inputted address 
-   http://photon.komoot.de/api/?limit=1&q='
-   
+Nominatim openstreet map was used to get the geographical coordinates of the store address, with the link: https://nominatim.openstreetmap.org/search/?limit=1&format=json&q=
 
 
 
