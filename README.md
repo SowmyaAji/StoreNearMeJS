@@ -11,3 +11,8 @@ the distance from the address given a input.
 
 Leaflet map with an address like this address in a popup:
 Store Name Crystal Store Location SWC Broadway & Bass Lake Rd Address 5537 W Broadway Ave City Crystal State MN Zip Code 55428-3507 Latitude 45.0521539 Longitude -93.364854 County Hennepin County
+
+# Resources
+
+Leaflet.js open street map
+Nominatim open street map
