@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>StoreNearMe</title>
-    <link rel="stylesheet" href="css/find_store.css">
+    <link rel="stylesheet" href="find_store.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
     
@@ -29,7 +29,6 @@
 <body>
     <header>
     <hr><hr>
-        <a href="index.html">Home</a>
         <h1>StoreNearMe</h1>
         <hr>
         <hr>
@@ -40,30 +39,9 @@
     <br>
     <div id="mapid"></div>
 
-</div?
+</div>
 </body>
  
-<script>
-//initialize map with sample latitude and longitude
-let initialLatLng = [35.9957436, -78.9012117]
-let mymap = L.map('mapid').setView(initialLatLng, 15);
-
-//get the initial map from the Leaflet API
-
-
-const osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-
-}).addTo(mymap);
-    
-//set initial marker at the store nearest to the sample latitude and longitude
-let mylatLng = [35.966045, -78.9587215]
-let marker = L.marker(mylatLng).addTo(mymap);
-marker.setLatLng(mylatLng).update();
-
-//add simple popup to marker
-marker.bindPopup("<b>Hi! I am the nearest store!").openPopup();
-</script>
 
 <script src="findStore.js"></script>
 

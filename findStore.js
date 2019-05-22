@@ -1,3 +1,5 @@
+let mymap, mylatLng, marker;
+
 //get the address from the input box and pass it to the function that searches for its latitude and longitude
 function getAdd() {
     $("#addbtn").on('click', function () {
@@ -63,7 +65,7 @@ function findNearest(addLat, addLong, storeArr) {
     });
     marker.setPopupContent(storeadd);
     $("#storeadd").val("Distance: " + distance + " miles")
-    mymap.setView(mylatLng, 15).update();
+    view = mymap.setView(mylatLng, 15).update();
     console.log(storeadd)
 
     // return {
@@ -94,3 +96,26 @@ function getDistance(lat1, lon1, lat2, lon2, unit = "M") {
         return dist;
     }
 }
+function initializeMap() {
+    //initialize map with sample latitude and longitude
+    let initialLatLng = [35.9957436, -78.9012117]
+    mymap = L.map('mapid').setView(initialLatLng, 15);
+
+    //get the initial map from the Leaflet API
+
+
+    const osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+
+    }).addTo(mymap);
+
+    //set initial marker at the store nearest to the sample latitude and longitude
+    mylatLng = [35.966045, -78.9587215]
+    marker = L.marker(mylatLng).addTo(mymap);
+    marker.setLatLng(mylatLng).update();
+
+    //add simple popup to marker
+    marker.bindPopup("<b>Hi! I am the nearest store!").openPopup();
+}
+
+$(document).ready(initializeMap);
